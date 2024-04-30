@@ -1,0 +1,1 @@
+{"version":3,"sources":["reset.scss"],"names":[],"mappings":"AAAA,EACI,aACA,UACA","file":"../reset.css","sourcesContent":["* {\r\n    box-sizing: 0;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\n"]}

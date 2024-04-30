@@ -1,0 +1,73 @@
+
+
+#main-carousel {
+    height: 300px;
+    .carousel.slide {
+        .carousel.inner {
+            .carousel-item {
+                img {
+                    max-height: 300px; 
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
+
+.container {
+    h2 {
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+    .form-group.container {
+        display: flex;
+        justify-content: space-between;
+        form {
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            .form-control {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+
+.popular_movies {
+    padding-top: 3rem; 
+    
+    .container {
+        padding-bottom: 3rem; 
+        
+        h2 {
+            padding-bottom: 3rem;
+        }
+        
+        &__grid {
+            max-width: 1024px; 
+            margin: 0 auto; 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 2%; 
+            
+            .grid_item {
+                padding: 0 0.5rem 1rem; 
+                transition: transform 0.5s;
+                
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    border-radius: 4%;
+                }
+                
+                &:hover {
+                    transform: translateY(5px);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+

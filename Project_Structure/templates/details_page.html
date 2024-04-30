@@ -1,0 +1,17 @@
+{% extends 'struct.html' %}
+
+{% block details_page %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <img src="https://image.tmdb.org/t/p/w500/{{ data.poster_path }}" alt="Movie Poster" class="poster-image">
+            </div>
+            <div class="col-lg-8">
+                <h2 class="mb-4">{{ data.original_title }}</h2>
+                <p><strong>Release Date:</strong> {{ data.release_date }} </p>
+                <p><strong>Average Rating:</strong> {{ data.vote_average }}</p>
+                <p>{{ data.overview }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock details_page %}

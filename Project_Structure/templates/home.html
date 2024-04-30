@@ -1,0 +1,64 @@
+{% extends 'struct.html' %}
+{% block carousel_items %}
+<section id="main-carousel">
+    <div class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel inner">
+            
+                {% for data in datas %}
+                    {% if data == datas[0] %}
+                        <div  data-bs-interval="3200" class="carousel-item active">
+                            <img class="w-100" src="https://image.tmdb.org/t/p/w500/{{ data.backdrop_path }}" alt="{{ data.original_title }}">
+                        </div>
+                    {% else %}
+                        <div data-bs-interval="3200" class="carousel-item">
+                            <img class="w-100" src="https://image.tmdb.org/t/p/w500/{{ data.backdrop_path }}" alt="{{ data.original_title }}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            
+        </div>
+    </div>
+</section>
+{% endblock carousel_items %}
+{% block category %}
+<div class="container">
+    <h2>category</h2>
+    <div class="form-group container">
+        <form action=" {{url_for('views.filter_home')}}" method="get">
+            <select class="form-control" name="category">
+                <option value="">All</option>
+                <option value="27">Horror</option>
+                <option value="35">Comedy</option>
+                <option value="18">Drama</option>
+                <option value="80">Crime</option>
+                <option value="53">Thriller</option>
+                <option value="12">Adventure</option>
+                <option value="28">Action</option>
+                <option value="16">Animation</option>
+            </select>
+            <button  class="btn btn-success" type="submit" ><i class="bi bi-filter"></i></button>
+        </form>
+        
+    </div>
+</div>
+{% endblock category %}
+{% block popular_movies %}
+<div class="container">
+    <section class="popular_movies">
+        <h2>Popular Movies</h2>
+        <div class="container__grid">
+            
+                {% for data in api_datas %}
+                    <div class="grid_item">
+                        <a href="{{ url_for('views.details_page', data_id = data.id )}}">
+                            <img src="https://image.tmdb.org/t/p/w500/{{ data.poster_path }}" alt="{{ data.original_title }}">
+                        </a>
+                    </div>
+                {% endfor%}
+            
+        </div>   
+    </section>
+</div>  
+{% endblock popular_movies %}
+
+
