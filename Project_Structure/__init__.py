@@ -21,9 +21,6 @@ def init_app():
     
     from .models import User, Movie, List, ListMovies
 
-    
-
-
     with app.app_context():
         db.create_all()
 

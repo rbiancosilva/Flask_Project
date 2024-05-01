@@ -1,12 +1,12 @@
 from flask import Flask, render_template, Blueprint, request
 from flask_login import login_required, current_user, LoginManager
-
-
+from .models import User, List, ListMovies, Movie
 
 import json
 import requests
 
 #Configuring data from API
+
 
 url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
 
@@ -35,8 +35,16 @@ def register_page():
 @views.route('/profile_page', methods = ['GET', 'POST'])
 @login_required
 def profile_page():
+    user_movies_query = current_user.notes[0].listmovies
 
-    return render_template("profile_page.html", title = "Profile", user=current_user, datas = datas)
+    user_movies_list = []
+
+    for data in datas:
+        for movie in user_movies_query:
+            if data['id'] == movie.movie_id:
+                user_movies_list.append(data)
+    
+    return render_template("profile_page.html", title = "Profile", user=current_user, datas = user_movies_list)
 
 @views.route('/filter_home', methods = ['GET', 'POST'])
 @login_required
