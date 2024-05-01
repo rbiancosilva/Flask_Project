@@ -11,6 +11,7 @@
                 <p><strong>Release Date:</strong> {{ data.release_date }} </p>
                 <p><strong>Average Rating:</strong> {{ data.vote_average }}</p>
                 <p>{{ data.overview }}</p>
+                <a href="{{url_for('auth.add_movie', data_id = data.id )}}"> Add to your list </a>
             </div>
         </div>
     </div>

@@ -1,2 +1,41 @@
 {% extends 'struct.html' %}
 
+{% block login_page %}
+    {% if error %}
+    <div class="container mt-5">
+        <div class="alert alert-danger" id="error" role="alert">
+            {{ error }}
+        </div>
+    </div>
+    {% elif error == False %}
+    <div class="container mt-5">
+        <div class="alert alert-success" id="successfull" role="alert">
+            You've been successfuly Registered
+        </div>
+    </div>
+    {% endif %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h4>Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ url_for('auth.login') }}" method="post">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" name="email" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-dark text-white">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock login_page %}
