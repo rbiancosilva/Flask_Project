@@ -1,8 +1,12 @@
 @use 'reset.scss';
 @use 'details.scss';
 @use 'home.scss';
-
+@use 'register.scss';
 
 header {
     background-color: white;
+}
+
+a.nav-link {
+    color: black;
 }

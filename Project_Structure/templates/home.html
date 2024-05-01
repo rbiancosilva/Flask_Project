@@ -3,19 +3,17 @@
 <section id="main-carousel">
     <div class="carousel slide" data-bs-ride="carousel">
         <div class="carousel inner">
-            
-                {% for data in datas %}
-                    {% if data == datas[0] %}
                         <div  data-bs-interval="3200" class="carousel-item active">
-                            <img class="w-100" src="https://image.tmdb.org/t/p/w500/{{ data.backdrop_path }}" alt="{{ data.original_title }}">
+                            <img class="w-100" src="https://cdn.pixabay.com/photo/2020/02/27/18/54/popcorn-4885565_1280.jpg" alt="">
                         </div>
-                    {% else %}
+                    
                         <div data-bs-interval="3200" class="carousel-item">
-                            <img class="w-100" src="https://image.tmdb.org/t/p/w500/{{ data.backdrop_path }}" alt="{{ data.original_title }}">
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            
+                            <img class="w-100" src="https://cdn.pixabay.com/photo/2017/11/24/10/43/ticket-2974645_1280.jpg" alt="">
+                        </div>   
+
+                        <div data-bs-interval="3200" class="carousel-item">
+                            <img class="w-100" src="https://cdn.pixabay.com/photo/2015/12/09/17/12/popcorn-1085072_1280.jpg" alt="">
+                        </div>  
         </div>
     </div>
 </section>

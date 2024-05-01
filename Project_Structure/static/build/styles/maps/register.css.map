@@ -1,0 +1,1 @@
+{"version":3,"sources":["register.scss"],"names":[],"mappings":"AAAA,MACI,iBAGJ,+BACI","file":"../register.css","sourcesContent":["label {\r\n    padding-top: 20px;\r\n}\r\n\r\nbutton.btn.btn-dark.text-white {\r\n    margin-top: 20px;\r\n}\r\n\r\n\r\n\r\n"]}

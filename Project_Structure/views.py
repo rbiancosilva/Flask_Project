@@ -26,7 +26,7 @@ def login_page():
 
 @views.route('/register_page', methods = ['GET', 'POST'])
 def register_page():
-    return render_template("register_page.html", title = "Register")
+    return render_template("register_page.html", title = "Register", error = None)
 
 @views.route('/profile_page', methods = ['GET', 'POST'])
 def profile_page():
