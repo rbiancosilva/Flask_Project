@@ -35,7 +35,8 @@ def register_page():
 @views.route('/profile_page', methods = ['GET', 'POST'])
 @login_required
 def profile_page():
-    return render_template("profile_page.html", title = "Profile", user=current_user)
+
+    return render_template("profile_page.html", title = "Profile", user=current_user, datas = datas)
 
 @views.route('/filter_home', methods = ['GET', 'POST'])
 @login_required

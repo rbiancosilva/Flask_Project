@@ -1,9 +1,10 @@
-from flask import Flask, render_template, Blueprint, request, url_for, redirect
+from flask import Flask, render_template, Blueprint, request, url_for, redirect, jsonify
 from .models import User, List, Movie, ListMovies
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user, LoginManager
 from .views import datas
+
 
 import requests
 
@@ -65,21 +66,4 @@ def logout():
 @auth.route('/add_movie/<int:data_id>', methods = ['GET', 'POST'])
 @login_required
 def add_movie(data_id):
-    for data in datas:
-        if data_id == data['id']:
-            new_movie = Movie(id=data['id'], title=data['original_title'], poster_path=data['poster_path'])
-            db.session.add(new_movie)
-            db.session.commit()
-    new_listmovies = ListMovies(list_id=current_user.notes[0].id, movie_id=data_id)
-    db.session.add(new_listmovies)
-    db.session.commit()
-
-    list_movies = []
-
-    for movies in Movie.query.all():
-        for listmovie in movies.listmovies:
-            if listmovie.list_id == current_user.notes[0].id:
-                list_movies.append(movies.id)
-    return render_template("profile_page.html", data = list_movies, user=current_user)
-
-    
+    return render_template("profile_page.html", user = current_user, datas = datas)

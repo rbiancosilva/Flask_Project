@@ -4,42 +4,33 @@
 {% block profile_page %}
     <div class="container mt-5">
         <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-            <div class="card-header">
-                {{user.username}}'s' Profile
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Username: {{user.username}}</h5>
-                <p class="card-text">Email: {{user.email}}</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <h2>Movies</h2>
-            <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                <img style="width:100%; height:auto;" src="movie1.jpg" class="card-img-top movie-poster" alt="Movie 1 Poster">
+                <div class="card-header">
+                    Your Profile
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Movie 1</h5>
-                    <p class="card-text">Description of Movie 1.</p>
+                    <h5 class="card-title">Username: {{user.username}}</h5>
+                    <p class="card-text">Email: {{user.email}}</p>
                 </div>
                 </div>
             </div>
-            <!-- Movie 2 -->
-            <div class="col-md-4">
-                <div class="card">
-                <img src="movie2.jpg" class="card-img-top movie-poster" alt="Movie 2 Poster">
-                <div class="card-body">
-                    <h5 class="card-title">Movie 2</h5>
-                    <p class="card-text">Description of Movie 2.</p>
-                </div>
+            <div class="col-md-8">
+                <h2>Movies</h2>
+                <div class="row">
+                    {% for data in datas %}
+                        <div class="col-md-4">
+                            <div class="card">
+                            <img style="width:100%; height:auto;" src="https://image.tmdb.org/t/p/w500/{{ data.poster_path }}" class="card-img-top movie-poster" alt="{{data.original_title}}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{data.original_title}}</h5>
+                                <p class="card-text">{{data.overview}}</p>
+                            </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-            <!-- Add more movies as needed -->
-            </div>
-        </div>
         </div>
     </div>
 {% endblock profile_page %}
