@@ -6,13 +6,13 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                <div class="card-header">
-                    Your Profile
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Username: {{user.username}}</h5>
-                    <p class="card-text">Email: {{user.email}}</p>
-                </div>
+                    <div class="card-header bg-dark text-white">
+                        Your Profile
+                    </div>
+                    <div class="card-body">
+                        <p class="profile-info"><strong>Username:</strong> {{user.username}}</p>
+                        <p class="profile-info"><strong>Email:</strong> {{user.email}}</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-8">
@@ -21,10 +21,10 @@
                     {% for data in datas %}
                         <div class="col-md-4">
                             <div class="card">
-                            <img style="width:100%; height:auto;" src="https://image.tmdb.org/t/p/w500/{{ data.poster_path }}" class="card-img-top movie-poster" alt="{{data.original_title}}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{data.original_title}}</h5>
-                            </div>
+                                <img src="https://image.tmdb.org/t/p/w500/{{ data.poster_path }}" class="card-img-top movie-poster" alt="{{data.original_title}}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{data.original_title}}</h5>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}

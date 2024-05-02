@@ -28,7 +28,7 @@ def register():
     elif len(password) < 8 or str(password) == "":
         return render_template("register_page.html", error = "Your password is too small", user = current_user)
     elif password != confirmPassword:
-        return render_template("register_page.html", error = "The password don't match", user = current_user)
+        return render_template("register_page.html", error = "The passwords don't match", user = current_user)
     else:
         new_user = User(email=email, password=generate_password_hash(password, method='pbkdf2:sha256'), username=username)
         db.session.add(new_user)
@@ -50,7 +50,7 @@ def login():
                 new_list = List(list_name=current_user.username +"List", user_id=current_user.id)
                 db.session.add(new_list)
                 db.session.commit()
-            return render_template("profile_page.html", user = current_user)
+            return render_template("home.html", user = current_user)
         else:
             return render_template("login_page.html", error="Incorrect password", user = current_user)
     else:

@@ -2,6 +2,7 @@
 @use 'details.scss';
 @use 'home.scss';
 @use 'register.scss';
+@use 'profile.scss';
 
 header {
     background-color: white;
@@ -9,4 +10,8 @@ header {
 
 a.nav-link {
     color: black;
+}
+
+body {
+    padding-bottom: 20vh;
 }
