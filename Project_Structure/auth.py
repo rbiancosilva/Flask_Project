@@ -1,15 +1,19 @@
+#imports flask libraries and password hashing library
 from flask import Flask, render_template, Blueprint, request, url_for, redirect, jsonify
-from .models import User, List, Movie, ListMovies
-from werkzeug.security import generate_password_hash, check_password_hash
-from . import db
 from flask_login import login_user, login_required, logout_user, current_user, LoginManager
-from .views import datas
+from werkzeug.security import generate_password_hash, check_password_hash
 
-import requests
+#imports db and models
+from . import db
+from .models import User, List, Movie, ListMovies
 
+#imports api data form views.py
+from .views import datas 
 
+#Initializes python module auth.py
 auth = Blueprint("auth", __name__)
 
+#Route for registration of new users
 @auth.route('/register', methods = ['POST'])
 def register():
     username = request.form.get("username")
@@ -37,6 +41,7 @@ def register():
 
         return render_template("login_page.html", error=False, user = current_user)
 
+#Route for login if users
 @auth.route('/login', methods=['POST'])
 def login():
     email = request.form.get("email")
@@ -56,12 +61,14 @@ def login():
     else:
         return render_template("login_page.html", error="The email address is not registered", user = current_user)
 
+#Route for users logout
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('views.login_page'))
 
+#Route for adding new movies to user's list
 @auth.route('/add_movie/<int:data_id>', methods = ['GET', 'POST'])
 @login_required
 def add_movie(data_id):
@@ -101,10 +108,3 @@ def add_movie(data_id):
                 user_movies_list.append(data)
 
     return render_template("profile_page.html", user = current_user, datas = user_movies_list)
-
-    
-
-    
-
-
-    

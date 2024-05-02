@@ -5,9 +5,9 @@ from .models import User, List, ListMovies, Movie
 import json
 import requests
 
-#Configuring data from API
 
 
+#Starts API Data
 url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
 
 headers = {
@@ -17,21 +17,26 @@ headers = {
 
 datas = (json.loads((requests.get(url, headers=headers)).content))['results']
 
+#Initializes python module views.py
 views = Blueprint("views", __name__)
 
+#Route for home page layout using data from API
 @views.route('/', methods = ['GET', 'POST'])
 @login_required
 def home():
     return render_template("home.html", title = "Home", datas = datas, api_datas = datas, user=current_user)
 
+#Route for login page layout
 @views.route('/login_page', methods = ['GET', 'POST'])
 def login_page():
     return render_template("login_page.html", title = "Login", user = current_user)
 
+#Route for register page layout
 @views.route('/register_page', methods = ['GET', 'POST'])
 def register_page():
     return render_template("register_page.html", title = "Register", error = None, user = current_user)
 
+#Route for profile page with user's movie list
 @views.route('/profile_page', methods = ['GET', 'POST'])
 @login_required
 def profile_page():
@@ -46,6 +51,7 @@ def profile_page():
     
     return render_template("profile_page.html", title = "Profile", user=current_user, datas = user_movies_list)
 
+#Route for API data filtering, loads home layout
 @views.route('/filter_home', methods = ['GET', 'POST'])
 @login_required
 def filter_home():
@@ -60,6 +66,7 @@ def filter_home():
                     data_filtered.append(data)
     return render_template("home.html", datas = datas, api_datas = data_filtered, user=current_user)
 
+#Route for API data details
 @views.route('/details_page/<int:data_id>', methods = ['GET', 'POST'])
 @login_required
 def details_page(data_id):
@@ -68,7 +75,7 @@ def details_page(data_id):
             data_detailed = data
             return render_template("details_page.html", data = data_detailed, user=current_user)
 
-
+#Route for users page layout, loading all users from db
 @views.route('/users_page', methods = ['GET', 'POST'])
 @login_required
 def users_page():
@@ -76,6 +83,7 @@ def users_page():
 
     return render_template("users_page.html", user = current_user, users = users)
 
+#Route for user's details page, loading user's list
 @views.route('/user_details/<int:user_id>')
 @login_required
 def user_details(user_id):
