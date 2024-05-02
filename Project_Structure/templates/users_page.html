@@ -12,13 +12,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for user in users %}
-                
-                    <tr>
-                        <td><a href="{{ url_for('views.user_details', user_id = user.id)}}">{{user.username}}</a></td>
-                        <td>{{user.email}}</td>
-                    </tr>
-                
+                {% for user_i in users %}
+                    {% if user_i.id != user.id %}
+                        <tr>
+                            <td><a href="{{ url_for('views.user_details', user_id = user_i.id)}}">{{user_i.username}}</a></td>
+                            <td>{{user_i.email}}</td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
