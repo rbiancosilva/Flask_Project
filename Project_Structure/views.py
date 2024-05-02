@@ -59,11 +59,6 @@ def filter_home():
                 if int(cat) == int(genre_id):
                     data_filtered.append(data)
     return render_template("home.html", datas = datas, api_datas = data_filtered, user=current_user)
-    
-@views.route('/logout_page')
-@login_required
-def logout_page():
-    return 
 
 @views.route('/details_page/<int:data_id>', methods = ['GET', 'POST'])
 @login_required
@@ -73,4 +68,37 @@ def details_page(data_id):
             data_detailed = data
             return render_template("details_page.html", data = data_detailed, user=current_user)
 
+
+@views.route('/users_page', methods = ['GET', 'POST'])
+@login_required
+def users_page():
+    users = User.query.all()
+
+    return render_template("users_page.html", user = current_user, users = users)
+
+@views.route('/user_details/<int:user_id>')
+@login_required
+def user_details(user_id):
+    users = User.query.all()
+    for user in users:
+        if user.id == user_id:
+            user_x = user
+    user_list = user_x.notes
+    listmovies_list = ListMovies.query.all()
     
+    list_movies_id = []
+
+    for movie in listmovies_list:
+        for note in user_list:
+            if movie.list_id == note.id:
+                list_movies_id.append(movie)
+
+    list_movies = []
+
+    for data in datas:
+        for movie in list_movies_id:
+                if movie.movie_id == data['id']:
+                    list_movies.append(data)
+
+    return render_template("user_details.html", user = current_user, user_details = user_x, datas = list_movies)
+                    

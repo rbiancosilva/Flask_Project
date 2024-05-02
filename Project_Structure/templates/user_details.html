@@ -1,0 +1,38 @@
+{% extends 'struct.html' %}
+
+{% block user_details %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        Your Profile
+                    </div>
+                    <div class="card-body">
+                        <p class="profile-info"><strong>Username:</strong> {{ user_details.username }}</p>
+                        <p class="profile-info"><strong>Email:</strong> {{ user_details.email }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h2>Movies</h2>
+                {% if datas != None %}
+                <div class="row">
+                    {% for data in datas %}
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="https://image.tmdb.org/t/p/w500/{{ data.poster_path }}" class="card-img-top movie-poster" alt="{{data.original_title}}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{data.original_title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock user_details %}

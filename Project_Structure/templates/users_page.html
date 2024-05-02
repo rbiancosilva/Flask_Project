@@ -1,0 +1,27 @@
+{% extends 'struct.html' %}
+
+{% block users_page %}
+
+    <div class="container mt-5">
+        <h1 class="mb-4">User List</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                
+                    <tr>
+                        <td><a href="{{ url_for('views.user_details', user_id = user.id)}}">{{user.username}}</a></td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock users_page %}

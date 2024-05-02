@@ -50,7 +50,7 @@ def login():
                 new_list = List(list_name=current_user.username +"List", user_id=current_user.id)
                 db.session.add(new_list)
                 db.session.commit()
-            return render_template("home.html", user = current_user)
+            return render_template("home.html", user = current_user, api_datas = datas)
         else:
             return render_template("login_page.html", error="Incorrect password", user = current_user)
     else:
