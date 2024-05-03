@@ -73,7 +73,7 @@ def details_page(data_id):
     for data in datas:
         if data_id == data['id']:
             data_detailed = data
-            return render_template("details_page.html", data = data_detailed, user=current_user)
+            return render_template("details_page.html", data = data_detailed, user=current_user, title=data_detailed['original_title'])
 
 #Route for users page layout, loading all users from db
 @views.route('/users_page', methods = ['GET', 'POST'])
@@ -81,7 +81,7 @@ def details_page(data_id):
 def users_page():
     users = User.query.all()
 
-    return render_template("users_page.html", user = current_user, users = users)
+    return render_template("users_page.html", user = current_user, users = users, title="Users")
 
 #Route for user's details page, loading user's list
 @views.route('/user_details/<int:user_id>')
@@ -108,5 +108,5 @@ def user_details(user_id):
                 if movie.movie_id == data['id']:
                     list_movies.append(data)
 
-    return render_template("user_details.html", user = current_user, user_details = user_x, datas = list_movies)
+    return render_template("user_details.html", user = current_user, user_details = user_x, datas = list_movies, title=user_x.username)
                     

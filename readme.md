@@ -1,7 +1,7 @@
 # Flask Project  
 ## Made for multiway/sentry test
 
-The text with color red indicates that function is: <span style="color:red">not done</span>
+Function with * are not done
 
 ### Project functions:
 - Home page able to use API data
@@ -11,11 +11,11 @@ The text with color red indicates that function is: <span style="color:red">not 
 - User's profile   
     - Registers new users in the application
     - Uses authentication mechanism 
-    - <span style="color:red"> Allows user to update personal info </span>
+    - *Allows user to update personal info
     - Creates a public profile to show info about user
 - User's page
-    - Allows user to create and <span style="color:red">manage</span> customized movies lists
-    - <span style="color:red">Allow to indicate whether the list is public</span>
+    - Allows user to create and *manage customized movies lists
+    - *Allow to indicate whether the list is public
     - Show public lists so other users can see their movies 
 
 ### Libraries used:

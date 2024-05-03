@@ -21,7 +21,9 @@
                     {% for data in datas %}
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="https://image.tmdb.org/t/p/w500/{{ data.poster_path }}" class="card-img-top movie-poster" alt="{{data.original_title}}">
+                                <a href="{{ url_for('views.details_page', data_id = data.id )}}">
+                                    <img src="https://image.tmdb.org/t/p/w500/{{ data.poster_path }}" class="card-img-top movie-poster" alt="{{data.original_title}}">
+                                </a>
                                 <div class="card-body">
                                     <h5 class="card-title">{{data.original_title}}</h5>
                                 </div>
